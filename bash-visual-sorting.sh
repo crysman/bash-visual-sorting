@@ -110,9 +110,9 @@ function cmp {
 
 function bubble() {
 #dumb simple bubblesort
-  sorted=false
+  sorted= #false
   imax=${#arr[@]}
-  while ( ! $sorted ); do
+  while ! test $sorted; do
     sorted=true
     #echo ${arr[@]}
     for ((i=1;i<$imax;i++)); do 
@@ -120,7 +120,7 @@ function bubble() {
       drawGraph ${arr[@]}
       cmp $i $(($i-1)) && {
         swap $i $(($i-1))
-        sorted=false
+        sorted= #false
       }
     done
   done
@@ -129,9 +129,9 @@ function bubble() {
 
 function bubbledec() {
 #incrementally decreases the array passing cycle
-  sorted=false
+  sorted= #false
   imax=${#arr[@]}
-  while ( ! $sorted ); do
+  while ! test $sorted; do
     sorted=true
     #echo ${arr[@]}
     for ((i=1;i<$imax;i++)); do 
@@ -140,7 +140,7 @@ function bubbledec() {
       cmp $i $(($i-1)) && {
         swap $i $(($i-1))
       }
-        sorted=false
+        sorted= #false
     done
     imax=$(($imax-1))    
   done
