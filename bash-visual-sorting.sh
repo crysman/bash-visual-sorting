@@ -20,8 +20,8 @@ declare algSelected
 
 
 function usage {
-  echo "usage: `basename $0` <algorithm>" 2>&1
-  echo "algorithms: "${AVAILABLEALGS[@]} 2>&1
+  echo "usage: `basename $0` <algorithm>" >&2
+  echo "algorithms: "${AVAILABLEALGS[@]} >&2
 }
 
 
@@ -67,11 +67,11 @@ function arrayInit {
 function swap {
 # swaps a-th element with b-th element in an array
   test $# -ne 2 && {
-   echo "ERR: swap() needs 2 args, exitting..." 2>&1
+   echo "ERR: swap() needs 2 args, exitting..." >&2
    exit 2
   }
   test $1 -lt $2 && {
-   echo "ERR: swap() called with a<b, exitting..." 2>&1
+   echo "ERR: swap() called with a<b, exitting..." >&2
    exit 2
   }
   #echo ${arr[@]}
@@ -88,11 +88,11 @@ function swap {
 function cmp {
 # compares a-th with b-th, returns true if b>a
   test $# -ne 2 && {
-   echo "ERR: cmp() needs 2 args, exitting..." 2>&1
+   echo "ERR: cmp() needs 2 args, exitting..." >&2
    exit 2
   }
   test $1 -lt $2 && {
-   echo "ERR: cmp() called with a<b, exitting..." 2>&1
+   echo "ERR: cmp() called with a<b, exitting..." >&2
    exit 2
   }
   test ${arr[$2]} -gt ${arr[$1]} && {
@@ -163,7 +163,7 @@ for alg in ${AVAILABLEALGS[@]}; do
   }  
 done
 test $correctAlg || {
-  echo "ERR: invalid algorithm selected" 2>&1
+  echo "ERR: invalid algorithm selected" >&2
   usage
   exit 1
 }
